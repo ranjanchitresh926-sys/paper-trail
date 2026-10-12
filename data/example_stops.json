@@ -1,0 +1,8 @@
+[
+  {"id": "s1", "visible_text": "Banyan Bakery", "feature": "yellow bakery with a blue awning", "minutes_from_prev": 0},
+  {"id": "s2", "visible_text": "Royal Tailors", "feature": "narrow tailor shop with a mannequin in the window", "minutes_from_prev": 3},
+  {"id": "s3", "visible_text": "Oasis Juice", "feature": "juice stall with a green cart", "minutes_from_prev": 2},
+  {"id": "s4", "visible_text": "Wood Works", "feature": "carpenter workshop with stacked planks outside", "minutes_from_prev": 4},
+  {"id": "s5", "visible_text": "Newspaper Stand", "feature": "red kiosk selling papers by the bus stop", "minutes_from_prev": 3},
+  {"id": "s6", "visible_text": "Temple Gate", "feature": "stone gateway with brass bells", "minutes_from_prev": 5}
+]

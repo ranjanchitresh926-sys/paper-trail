@@ -1,0 +1,173 @@
+{
+  "teams": [
+    {
+      "team": 1,
+      "word": "STAIN",
+      "direction": "forward",
+      "check": 11,
+      "cost": 0,
+      "minutes": 17.4,
+      "steps": [
+        {
+          "n": 1,
+          "stop_id": "s1",
+          "sign": "Sundial",
+          "rule": "first",
+          "rule_text": "first letter",
+          "letter": "S",
+          "clue": "Look for the large building where travelers gather, featuring an open, round patch of ground right in its center.",
+          "attempts": 1
+        },
+        {
+          "n": 2,
+          "stop_id": "s5",
+          "sign": "Temple",
+          "rule": "first",
+          "rule_text": "first letter",
+          "letter": "T",
+          "clue": "Look toward the tall structures where leaves shade a central open area, and a bright banner flutters above the highest points.",
+          "attempts": 1
+        },
+        {
+          "n": 3,
+          "stop_id": "s7",
+          "sign": "Admin Block",
+          "rule": "first",
+          "rule_text": "first letter",
+          "letter": "A",
+          "clue": "A cluster of large, connected structures stands before you, their combined mass dominating this stretch of walkway.",
+          "attempts": 1
+        },
+        {
+          "n": 4,
+          "stop_id": "s9",
+          "sign": "Information Technology Department",
+          "rule": "first",
+          "rule_text": "first letter",
+          "letter": "I",
+          "clue": "Where weathered brick meets an open ascent, look for the circular path rising above the ground level.",
+          "attempts": 1
+        },
+        {
+          "n": 5,
+          "stop_id": "s13",
+          "sign": "Nutmeg",
+          "rule": "first",
+          "rule_text": "first letter",
+          "letter": "N",
+          "clue": "Near the curb, a small metal object hangs beside a posted message. Hear the chime if your experience was pleasant.",
+          "attempts": 3
+        }
+      ]
+    },
+    {
+      "team": 2,
+      "word": "EDGED",
+      "direction": "reverse",
+      "check": 25,
+      "cost": 2,
+      "minutes": 9.9,
+      "steps": [
+        {
+          "n": 1,
+          "stop_id": "s10",
+          "sign": "Engineering Sciences Department",
+          "rule": "first",
+          "rule_text": "first letter",
+          "letter": "E",
+          "clue": "Look for the ground-level entrance beside the building section marked with the letter B. A wide, open space is visible just inside.",
+          "attempts": 1
+        },
+        {
+          "n": 2,
+          "stop_id": "s8",
+          "sign": "Football Ground",
+          "rule": "last",
+          "rule_text": "last letter",
+          "letter": "D",
+          "clue": "A large expanse of green grass stretches out before you, marked by tall, upright frames at either end.",
+          "attempts": 1
+        },
+        {
+          "n": 3,
+          "stop_id": "s6",
+          "sign": "Girl's Hostel",
+          "rule": "first",
+          "rule_text": "first letter",
+          "letter": "G",
+          "clue": "Where metal swings sway beneath open sky, look for the structure just beyond the green expanse.",
+          "attempts": 2
+        },
+        {
+          "n": 4,
+          "stop_id": "s5",
+          "sign": "Temple",
+          "rule": "last",
+          "rule_text": "last letter",
+          "letter": "E",
+          "clue": "Look for the tall, pointed structures in the distance, where green canopies shade a central open area.",
+          "attempts": 1
+        },
+        {
+          "n": 5,
+          "stop_id": "s4",
+          "sign": "Director's Residence",
+          "rule": "first",
+          "rule_text": "first letter",
+          "letter": "D",
+          "clue": "Look for the low boundary of stacked grey stones, where a dark metal opening stands before a bright structure.",
+          "attempts": 1
+        }
+      ]
+    }
+  ],
+  "skipped": [
+    {
+      "word": "MEDAL",
+      "reason": "no acceptable clue for s11 (Management Department)"
+    },
+    {
+      "word": "ELDER",
+      "reason": "no acceptable clue for s12 (Lecture Theater 2)"
+    },
+    {
+      "word": "IDEAL",
+      "reason": "no acceptable clue for s11 (Management Department)"
+    },
+    {
+      "word": "LOGIN",
+      "reason": "no acceptable clue for s12 (Lecture Theater 2)"
+    },
+    {
+      "word": "MEDIC",
+      "reason": "no acceptable clue for s11 (Management Department)"
+    },
+    {
+      "word": "PEDAL",
+      "reason": "no acceptable clue for s11 (Management Department)"
+    },
+    {
+      "word": "METER",
+      "reason": "no acceptable clue for s12 (Lecture Theater 2)"
+    },
+    {
+      "word": "CLEAR",
+      "reason": "no acceptable clue for s11 (Management Department)"
+    },
+    {
+      "word": "SMELL",
+      "reason": "no acceptable clue for s12 (Lecture Theater 2)"
+    },
+    {
+      "word": "CIDER",
+      "reason": "no acceptable clue for s12 (Lecture Theater 2)"
+    }
+  ],
+  "stats": {
+    "stops": 13,
+    "segments": 1,
+    "teams_requested": 2,
+    "clue_attempts": 32,
+    "clues": 21
+  }
+}

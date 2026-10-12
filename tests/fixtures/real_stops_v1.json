@@ -1,0 +1,145 @@
+[
+  {
+    "id": "s1",
+    "visible_text": "Sundial",
+    "feature": "big hostel with a circular court in the middle",
+    "minutes_from_prev": 0.0,
+    "safe": true,
+    "heard": "Sundial",
+    "t_start": 3.6,
+    "flags": [],
+    "confirmed": true
+  },
+  {
+    "id": "s2",
+    "visible_text": "Underpass",
+    "feature": "long underground tunnel with white shade",
+    "minutes_from_prev": 0.9,
+    "safe": true,
+    "heard": "Underpass",
+    "t_start": 67.0,
+    "flags": [],
+    "confirmed": true
+  },
+  {
+    "id": "s3",
+    "visible_text": "Marlow",
+    "feature": "hotel-like bungalow with a fountain at the entrance",
+    "minutes_from_prev": 2.6,
+    "safe": true,
+    "heard": "Marlow",
+    "t_start": 228.8,
+    "flags": [],
+    "confirmed": true
+  },
+  {
+    "id": "s4",
+    "visible_text": "Director's Residence",
+    "feature": "white house behind a low stone wall with a black gate",
+    "minutes_from_prev": 1.3,
+    "safe": true,
+    "heard": "directors residence",
+    "t_start": 317.2,
+    "flags": [],
+    "confirmed": true
+  },
+  {
+    "id": "s5",
+    "visible_text": "Temple",
+    "feature": "towering spires, a courtyard with old trees, and a colorful flag at the top of the spire",
+    "minutes_from_prev": 1.4,
+    "safe": true,
+    "heard": "temple",
+    "t_start": 409.4,
+    "flags": [],
+    "confirmed": true
+  },
+  {
+    "id": "s6",
+    "visible_text": "Girl's Hostel",
+    "feature": "2 swings and a park in front of the building",
+    "minutes_from_prev": 2.3,
+    "safe": true,
+    "heard": "girls hostel",
+    "t_start": 558.5,
+    "flags": [],
+    "confirmed": true
+  },
+  {
+    "id": "s7",
+    "visible_text": "Admin Block",
+    "feature": "huge complex made of 5 connected buildings",
+    "minutes_from_prev": 3.4,
+    "safe": true,
+    "heard": "Admin Block",
+    "t_start": 768.4,
+    "flags": [],
+    "confirmed": true
+  },
+  {
+    "id": "s8",
+    "visible_text": "Football Ground",
+    "feature": "huge green field with 2 goal posts",
+    "minutes_from_prev": 1.1,
+    "safe": true,
+    "heard": "Football Ground",
+    "t_start": 855.9,
+    "flags": [],
+    "confirmed": true
+  },
+  {
+    "id": "s9",
+    "visible_text": "Information Technology Department",
+    "feature": "in the building called A Block, with a spiral staircase open to the sky",
+    "minutes_from_prev": 0.9,
+    "safe": true,
+    "heard": "information technology department",
+    "t_start": 919.3,
+    "flags": [],
+    "confirmed": true
+  },
+  {
+    "id": "s10",
+    "visible_text": "Engineering Sciences Department",
+    "feature": "in the building called B Block, with an open study area in the centre",
+    "minutes_from_prev": 0.8,
+    "safe": true,
+    "heard": "engineering sciences department",
+    "t_start": 980.9,
+    "flags": [],
+    "confirmed": true
+  },
+  {
+    "id": "s11",
+    "visible_text": "Management Department",
+    "feature": "in the building called C Block",
+    "minutes_from_prev": 0.7,
+    "safe": true,
+    "heard": "management department",
+    "t_start": 1032.6,
+    "flags": [],
+    "confirmed": true
+  },
+  {
+    "id": "s12",
+    "visible_text": "Lecture Theater 2",
+    "feature": "in the building called D Block, two floors high",
+    "minutes_from_prev": 1.0,
+    "safe": true,
+    "heard": "lecture theater 2",
+    "t_start": 1103.7,
+    "flags": [],
+    "confirmed": true
+  },
+  {
+    "id": "s13",
+    "visible_text": "Nutmeg",
+    "feature": "a small bell hanging beside a notice that says to ring it if you are happy with the service",
+    "minutes_from_prev": 1.0,
+    "safe": true,
+    "heard": "Nutmeg",
+    "t_start": 1174.3,
+    "flags": [],
+    "confirmed": true
+  }
+]

@@ -1,0 +1,6 @@
+faster-whisper
+av>=15,<17
+ctranslate2>=4.5
+wordfreq
+requests
+pytest

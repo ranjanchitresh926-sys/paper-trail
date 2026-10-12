@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Paper Trail: try the check number</title>
+<style>
+:root{--bg:#fbfaf7;--fg:#1b1b1b;--muted:#5d5d5d;--card:#ffffff;--line:#d8d5cc;--accent:#1f7a4d;--bad:#b3261e;--good:#1f7a4d;--warn:#8a5a00;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#15171a;--fg:#ececec;--muted:#a3a3a3;--card:#1e2125;--line:#363a40;--accent:#5fd08f;--bad:#ff8a80;--good:#5fd08f;--warn:#e6b450}}
+:root[data-theme="dark"]{--bg:#15171a;--fg:#ececec;--muted:#a3a3a3;--card:#1e2125;--line:#363a40;--accent:#5fd08f;--bad:#ff8a80;--good:#5fd08f;--warn:#e6b450}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.5 Georgia,"Times New Roman",serif}
+main{max-width:760px;margin:0 auto;padding:20px 16px 48px}
+h1{font-size:1.9rem;margin:.2em 0 .1em}
+h2{font-size:1.25rem;margin:1.6em 0 .4em}
+.sub{color:var(--muted);font-family:system-ui,sans-serif;font-size:.95rem;margin:0 0 1em}
+.note{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--warn);border-radius:8px;padding:12px 14px;font-family:system-ui,sans-serif;font-size:.92rem}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:10px 0}
+.step{display:flex;gap:12px;align-items:flex-start}
+.num{font:700 1.4rem system-ui,sans-serif;color:var(--accent);min-width:1.6rem}
+.rule{font:.88rem system-ui,sans-serif;color:var(--muted);margin-top:4px}
+.letters{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+input[type=text]{font:700 1.4rem system-ui,sans-serif;text-align:center;text-transform:uppercase;border:2px solid var(--fg);border-radius:8px;background:var(--card);color:var(--fg)}
+.box{width:3rem;height:3rem}
+.wide{width:100%;max-width:22rem;height:2.8rem;font-size:1.1rem;text-align:left;padding:0 10px;text-transform:none;font-weight:600}
+button{font:600 1rem system-ui,sans-serif;border:0;border-radius:8px;background:var(--accent);color:#fff;padding:10px 16px;cursor:pointer}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) button{color:#0b1f14}}
+button.ghost{background:transparent;color:var(--accent);border:1px solid var(--accent)}
+.out{font:1rem system-ui,sans-serif;margin-top:8px;min-height:1.5em}
+.good{color:var(--good);font-weight:600}.bad{color:var(--bad);font-weight:600}
+table{border-collapse:collapse;width:100%;font:.9rem system-ui,sans-serif;display:block;overflow-x:auto}
+td,th{border:1px solid var(--line);padding:6px 8px;text-align:left}
+code{font:.9em ui-monospace,Consolas,monospace;background:var(--card);border:1px solid var(--line);border-radius:4px;padding:1px 5px}
+pre{font:.85rem ui-monospace,Consolas,monospace;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:10px;overflow-x:auto}
+select{font:1rem system-ui,sans-serif;height:2.8rem;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--fg)}
+label{font:.9rem system-ui,sans-serif;color:var(--muted)}
+</style>
+</head>
+<body>
+<main>
+<h1>Paper Trail: try the check number</h1>
+<p class="sub">A voice recording of a walk becomes a puzzle hunt. This page lets you try the part that checks the answers.</p>
+
+<div class="note"><b>What this page is, and isn't.</b> It uses an <b>invented route</b>, so my real one stays private. The clues below are <b>hand-written samples</b> that show the format. In the real tool, Whisper and Gemma 4 run locally on a GPU laptop and write the clues; they can't run in a web page. What does run here is the checking logic: letter rules, the check number and the debrief. It is a small port of the same arithmetic as the Python code in the repository.</div>
+
+<h2>1. Walk the sample hunt</h2>
+<p class="sub">A team gets a sheet like this. At each place they read the right sign and write down one letter. The letters, in order, spell a word.</p>
+<div id="sheet"></div>
+
+<h2>2. Fill in your letters</h2>
+<div class="card">
+  <div class="letters" id="boxes"></div>
+  <button id="btnCheck">Check my word</button>
+  <div class="out" id="checkOut"></div>
+  <p class="rule">The sheet says the <b>check number is 20</b>. Give each letter a value (A=1 ... Z=26), add them up, and while the total is above 26 subtract 26. If your number differs from the sheet, a letter is wrong or a sign has changed.</p>
+</div>
+
+<h2>3. Debrief: what did a team write?</h2>
+<div class="card">
+  <p class="rule" style="margin-top:0">Type the word a team wrote on its sheet, right or wrong. The tool compares it with the key and points at the stop that was probably misread or has changed.</p>
+  <input type="text" class="wide" id="written" placeholder="e.g. RIVEN" autocomplete="off" maxlength="12">
+  <p><button id="btnDebrief">Compare with the key</button></p>
+  <div class="out" id="debriefOut"></div>
+</div>
+
+<h2>4. Try the rules on your own sign</h2>
+<div class="card">
+  <p class="rule" style="margin-top:0">Each stop gives one letter by a rule. Counting letters only, with no spaces, apostrophes or digits, the sheet also tells players how many letters the right sign has, so they never read the wrong sign.</p>
+  <input type="text" class="wide" id="signIn" value="Lecture Theater 2" autocomplete="off">
+  <p><label>Rule: </label>
+  <select id="ruleIn"><option value="first">first letter</option><option value="last">last letter</option><option value="nth:2">2nd letter</option><option value="nth:-2">2nd-to-last letter</option></select></p>
+  <div class="out" id="signOut"></div>
+</div>
+
+<h2>How the hunt is made</h2>
+<p>I scout a loop with a voice recorder, saying the sign text and one visible detail at each stop. Whisper transcribes it, Gemma 4 structures the stops, and plain code finds words that the signs' letters can spell in walking order. Gemma writes the clues, and a solver pass and a truthfulness pass reject clues that point to two places or describe things I never said. The rule I held to: the models propose and write, and code decides anything that can be checked.</p>
+<p class="sub">The code, the tests and the write-up are linked from the DEV post for the Hacktoberfest Open-Source AI Challenge, Week 1.</p>
+</main>
+
+<script>
+const HUNT = {
+  word: "RIVER",
+  steps: [
+    {sign:"Rose Garden",    rule:"first", clue:"An iron gate with a rose carved into it."},
+    {sign:"Fire Station",   rule:"nth:2", clue:"Wide red doors under a tall tower for drying hoses."},
+    {sign:"Violet Florist", rule:"first", clue:"Buckets of flowers on the pavement under a purple awning."},
+    {sign:"Maple Lane",     rule:"last",  clue:"A narrow street where tall trees meet overhead."},
+    {sign:"Water Tower",    rule:"last",  clue:"A round stone structure with a copper roof."}
+  ]
+};
+
+// ---- the checking logic (same arithmetic as papertrail/composer.py) ----
+function lettersOnly(s){ return String(s).toUpperCase().replace(/[^A-Z]/g, ""); }
+function checkValue(word){
+  const w = lettersOnly(word);
+  let sum = 0; for (const c of w) sum += c.charCodeAt(0) - 64;
+  return (((sum - 1) % 26) + 26) % 26 + 1;
+}
+function applyRule(sign, rule){
+  const L = lettersOnly(sign);
+  if (!L) return "";
+  if (rule === "first") return L[0];
+  if (rule === "last") return L[L.length - 1];
+  if (rule.startsWith("nth:")) {
+    const k = parseInt(rule.slice(4), 10);
+    const i = k > 0 ? k - 1 : L.length + k;
+    return (i >= 0 && i < L.length) ? L[i] : "";
+  }
+  return "";
+}
+function ruleText(rule){
+  if (rule === "first") return "first letter";
+  if (rule === "last") return "last letter";
+  const k = parseInt(rule.slice(4), 10);
+  if (k === 2) return "2nd letter";
+  if (k === -2) return "2nd-to-last letter";
+  return k > 0 ? k + "th letter" : (-k) + "th-to-last letter";
+}
+function debrief(written, hunt){
+  const obs = lettersOnly(written), key = hunt.steps.map(s => applyRule(s.sign, s.rule)).join("");
+  const exp = checkValue(key);
+  if (!obs) return {status:"empty"};
+  if (obs === key) return {status:"ok", key, exp};
+  if (obs.length !== key.length) return {status:"length", key, obs, exp};
+  const wrong = [];
+  for (let i = 0; i < key.length; i++) if (obs[i] !== key[i]) wrong.push(i);
+  return {status:"mismatch", key, obs, exp, got: checkValue(obs), wrong};
+}
+// ------------------------------------------------------------------------
+
+const KEY = HUNT.steps.map(s => applyRule(s.sign, s.rule)).join("");
+const EXPECTED = checkValue(KEY);
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+// sheet
+$("sheet").innerHTML = HUNT.steps.map((s, i) =>
+  `<div class="card step"><div class="num">${i+1}</div><div><div>${esc(s.clue)}</div>
+   <div class="rule">Write the <b>${ruleText(s.rule)}</b> of the sign whose name has <b>${lettersOnly(s.sign).length} letters</b>.</div></div></div>`).join("");
+
+// letter boxes
+$("boxes").innerHTML = HUNT.steps.map((_, i) => `<input type="text" class="box" maxlength="1" id="b${i}" aria-label="Letter ${i+1}" autocomplete="off">`).join("");
+HUNT.steps.forEach((_, i) => {
+  $("b"+i).addEventListener("input", e => { e.target.value = lettersOnly(e.target.value).slice(0,1); if (e.target.value && i < HUNT.steps.length-1) $("b"+(i+1)).focus(); });
+});
+$("btnCheck").addEventListener("click", () => {
+  const w = HUNT.steps.map((_, i) => lettersOnly($("b"+i).value)).join("");
+  const out = $("checkOut");
+  if (w.length < HUNT.steps.length) { out.innerHTML = '<span class="bad">Fill in all ' + HUNT.steps.length + ' letters first.</span>'; return; }
+  const n = checkValue(w);
+  out.innerHTML = n === EXPECTED
+    ? `Your letters spell <b>${w}</b>. Check number <b>${n}</b>: <span class="good">it matches the sheet.</span>`
+    : `Your letters spell <b>${w}</b>. Check number <b>${n}</b>, but the sheet says <b>${EXPECTED}</b>: <span class="bad">a letter is wrong or a sign has changed. Look again.</span>`;
+});
+
+// debrief
+$("btnDebrief").addEventListener("click", () => {
+  const r = debrief($("written").value, HUNT), out = $("debriefOut");
+  if (r.status === "empty") { out.innerHTML = '<span class="bad">Type the word the team wrote.</span>'; return; }
+  if (r.status === "ok") { out.innerHTML = `<span class="good">Correct: ${r.key}.</span>`; return; }
+  if (r.status === "length") { out.innerHTML = `The team wrote ${esc(r.obs)} (${r.obs.length} letters) but the word has ${r.key.length}: <span class="bad">a letter is missing or extra. Ask which clue they skipped.</span>`; return; }
+  const rows = r.wrong.map(i => { const s = HUNT.steps[i];
+    return `<li>Letter ${i+1}: wrote <b>${r.obs[i]}</b>, expected <b>${r.key[i]}</b>. Stop ${i+1} (${esc(s.sign)}, ${ruleText(s.rule)}): the sign may have changed, or the team misread it. Go and look.</li>`; }).join("");
+  out.innerHTML = `The team wrote <b>${esc(r.obs)}</b>, the key says <b>${r.key}</b>.<ul>${rows}</ul>Their check number would be <b>${r.got}</b>, expected <b>${r.exp}</b>.`;
+});
+
+// own sign
+function renderSign(){
+  const sign = $("signIn").value, rule = $("ruleIn").value, L = lettersOnly(sign), out = $("signOut");
+  if (!L) { out.innerHTML = ""; return; }
+  const l = applyRule(sign, rule);
+  out.innerHTML = l ? `Letters counted: <b>${L.length}</b> (${esc(L)}). The ${ruleText(rule)} is <b>${l}</b>.` : `That sign has only ${L.length} letters, so this rule gives no letter.`;
+}
+$("signIn").addEventListener("input", renderSign); $("ruleIn").addEventListener("change", renderSign); renderSign();
+</script>
+</body>
+</html>

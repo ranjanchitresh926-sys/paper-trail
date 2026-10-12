@@ -1,0 +1,13 @@
+.venv/
+cache/
+__pycache__/
+.pytest_cache/
+*.m4a
+*.wav
+scout_transcript*.json
+stops.json
+stops_previous.json
+stops_edit.txt
+stops_review.md
+hunt/
+signs.txt

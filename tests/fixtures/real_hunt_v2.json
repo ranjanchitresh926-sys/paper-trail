@@ -1,0 +1,149 @@
+{
+  "teams": [
+    {
+      "team": 1,
+      "word": "STAIN",
+      "direction": "forward",
+      "check": 11,
+      "cost": 0,
+      "minutes": 17.4,
+      "approach_minutes": 0.0,
+      "total_minutes": 17.4,
+      "start_sign": "",
+      "steps": [
+        {
+          "n": 1,
+          "stop_id": "s1",
+          "sign": "Sundial",
+          "rule": "first",
+          "rule_text": "first letter",
+          "letter": "S",
+          "clue": "A big hostel features a circular court in the middle.",
+          "feature": "big hostel with a circular court in the middle",
+          "attempts": 1
+        },
+        {
+          "n": 2,
+          "stop_id": "s5",
+          "sign": "Temple",
+          "rule": "first",
+          "rule_text": "first letter",
+          "letter": "T",
+          "clue": "Towering spires rise above a courtyard with old trees, featuring a flag at the top of a spire.",
+          "feature": "towering spires, a courtyard with old trees, and a colorful flag at the top of the spire",
+          "attempts": 1
+        },
+        {
+          "n": 3,
+          "stop_id": "s7",
+          "sign": "Admin Block",
+          "rule": "first",
+          "rule_text": "first letter",
+          "letter": "A",
+          "clue": "A huge complex made of 5 connected buildings.",
+          "feature": "huge complex made of 5 connected buildings",
+          "attempts": 1
+        },
+        {
+          "n": 4,
+          "stop_id": "s9",
+          "sign": "Information Technology Department",
+          "rule": "first",
+          "rule_text": "first letter",
+          "letter": "I",
+          "clue": "In A Block, there is a spiral staircase open to the sky.",
+          "feature": "in the building called A Block, with a spiral staircase open to the sky",
+          "attempts": 1
+        },
+        {
+          "n": 5,
+          "stop_id": "s13",
+          "sign": "Nutmeg",
+          "rule": "first",
+          "rule_text": "first letter",
+          "letter": "N",
+          "clue": "A small bell hangs beside a notice that says to ring it if you are happy with the service.",
+          "feature": "a small bell hanging beside a notice that says to ring it if you are happy with the service",
+          "attempts": 1
+        }
+      ]
+    },
+    {
+      "team": 2,
+      "word": "MEDAL",
+      "direction": "forward",
+      "check": 9,
+      "cost": 4,
+      "minutes": 12.9,
+      "approach_minutes": 2.6,
+      "total_minutes": 15.5,
+      "start_sign": "Underpass",
+      "steps": [
+        {
+          "n": 1,
+          "stop_id": "s3",
+          "sign": "Marlow",
+          "rule": "first",
+          "rule_text": "first letter",
+          "letter": "M",
+          "clue": "A hotel-like bungalow features a fountain at its entrance.",
+          "feature": "hotel-like bungalow with a fountain at the entrance",
+          "attempts": 1
+        },
+        {
+          "n": 2,
+          "stop_id": "s4",
+          "sign": "Director's Residence",
+          "rule": "last",
+          "rule_text": "last letter",
+          "letter": "E",
+          "clue": "A white house is behind a low stone wall with a black gate.",
+          "feature": "white house behind a low stone wall with a black gate",
+          "attempts": 1
+        },
+        {
+          "n": 3,
+          "stop_id": "s8",
+          "sign": "Football Ground",
+          "rule": "last",
+          "rule_text": "last letter",
+          "letter": "D",
+          "clue": "A huge green field with 2 goal posts awaits your discovery.",
+          "feature": "huge green field with 2 goal posts",
+          "attempts": 1
+        },
+        {
+          "n": 4,
+          "stop_id": "s11",
+          "sign": "Management Department",
+          "rule": "nth:2",
+          "rule_text": "2nd letter",
+          "letter": "A",
+          "clue": "In the building called C Block, find your next location.",
+          "feature": "in the building called C Block",
+          "attempts": 1
+        },
+        {
+          "n": 5,
+          "stop_id": "s12",
+          "sign": "Lecture Theater 2",
+          "rule": "first",
+          "rule_text": "first letter",
+          "letter": "L",
+          "clue": "In the building called D Block, there are two floors high.",
+          "feature": "in the building called D Block, two floors high",
+          "attempts": 1
+        }
+      ]
+    }
+  ],
+  "skipped": [],
+  "stats": {
+    "stops": 13,
+    "segments": 1,
+    "teams_requested": 2,
+    "clue_attempts": 10,
+    "clues": 10,
+    "judge": true
+  }
+}
